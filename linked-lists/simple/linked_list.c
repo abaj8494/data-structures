@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <assert.h>
 
+// the node data structure
 struct node {
     int data;
     struct node *next;
 };
 
+// aliasing a pointer to this physical node structure
 typedef struct node* Node;
 
+// prototypes for the functions we perform on the linked list
 Node create_node(int data);
 Node create_list(int length);
 void print_list(Node list);
@@ -23,7 +26,7 @@ int main(void)
 
 Node create_node(int data){
     Node new = malloc(sizeof(struct node));
-    assert(new != NULL);
+    assert(new != NULL); // memory check
     new->data = data;
     new->next = NULL;
     return new;
