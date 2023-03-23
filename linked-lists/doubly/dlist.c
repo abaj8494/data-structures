@@ -3,8 +3,6 @@
 #include <assert.h>
 #include "dlist.h"
 
-
-
 int main(void) {
     Node n1 = create_node(1);
     Node n2 = create_node(2);
