@@ -2,8 +2,8 @@
 #include "queue.h"
 
 Queue createQueue(void) {
-    Queue q = malloc(sizeof(q));
-    q->head = NULL;
+    Queue q = malloc(sizeof(queue)); // notice that you malloc the sizeof the
+    q->head = NULL;                  // actual queue structure. not the sizeof(pointer)
     q->tail = NULL;
     return q;
 }

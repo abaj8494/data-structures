@@ -9,11 +9,11 @@ typedef struct node {
 
 typedef struct queue *Queue;
 
-struct queue {
+typedef struct queue {
     Node head;
     Node tail;
     int size;
-};
+} queue;
 
 
 Queue createQueue(void);
