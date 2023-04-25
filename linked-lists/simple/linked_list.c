@@ -44,18 +44,19 @@ Node rec_reverseList(Node head){
 }
 
 Node reverseList(Node head) {
-    if (head == NULL) {
-        return NULL;
+    if (head == NULL || head->next == NULL) {
+        return head;
     }
-    struct node *previous = NULL;
-    struct node *x = head;
-    while (x != NULL) {
-        Node y = x->next;
-        x->next = previous;
-        previous = x;
-        x = y;
+
+    Node new = NULL;
+    Node curr = head;
+    while (curr != NULL) {
+        Node tmp = curr->next;
+        curr->next = new;
+        new = curr;
+        curr = tmp;
     }
-    return previous;
+    return new;
 }
 
 
