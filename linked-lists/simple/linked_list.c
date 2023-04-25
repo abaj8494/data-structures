@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
+#include "linked_list.h"
 
 // the node data structure
 struct node {
@@ -8,21 +6,6 @@ struct node {
     struct node *next;
 };
 
-// aliasing a pointer to this physical node structure
-typedef struct node* Node;
-
-// prototypes for the functions we perform on the linked list
-Node create_node(int data);
-Node create_list(int length);
-void print_list(Node list);
-
-int main(void)
-{
-    Node list1 = create_list(7);
-    print_list(list1);
-
-    return 0;
-}
 
 Node create_node(int data){
     Node new = malloc(sizeof(struct node));
@@ -33,7 +16,6 @@ Node create_node(int data){
 }
 
 Node create_list(int length) {
-    
     Node head = NULL;
     if (length > 0) {
         head = create_node(0);
@@ -48,6 +30,34 @@ Node create_list(int length) {
     return head;
 }
 
+Node rec_reverseList(Node head){
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    //reverse rest of list
+    Node new_head = rec_reverseList(head->next);
+    head->next->next = head;
+    head->next = NULL;
+
+    return new_head;
+}
+
+Node reverseList(Node head) {
+    if (head == NULL) {
+        return NULL;
+    }
+    struct node *previous = NULL;
+    struct node *x = head;
+    while (x != NULL) {
+        Node y = x->next;
+        x->next = previous;
+        previous = x;
+        x = y;
+    }
+    return previous;
+}
+
 
 void print_list(Node list){
     Node curr = list;
@@ -59,4 +69,5 @@ void print_list(Node list){
 
     printf("X\n");
 }
+
 
